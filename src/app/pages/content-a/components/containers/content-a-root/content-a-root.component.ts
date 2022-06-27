@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { ContentAService } from '../../../../services/content-a.service';
+import { ContentAService } from '../../../services/content-a.service';
 
 @Component({
   selector: 'app-content-a-root',
