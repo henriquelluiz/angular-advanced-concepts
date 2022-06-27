@@ -3,22 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ContentARootComponent } from './pages/content-a/components/containers/content-a-root/content-a-root.component';
+import { ContentAChildComponent } from './pages/content-a/components/content-a-child/content-a-child.component';
+import { ContentAService } from './pages/services/content-a.service';
 
-import { HomeComponent } from './pages/home/container/home.component';
-import { HomeChieldComponent } from './pages/home/present/home-chield.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HomeChieldComponent
+    ContentARootComponent,
+    ContentAChildComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ContentAService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
