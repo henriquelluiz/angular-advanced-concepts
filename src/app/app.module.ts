@@ -9,12 +9,12 @@ import { ContentAChildComponent } from './pages/content-a/components/content-a-c
 import { ContentAService } from './pages/content-a/services/content-a.service';
 import { ContentBChildComponent } from './pages/content-b/components/content-b-child/content-b-child.component';
 import { ContentBRootComponent } from './pages/content-b/components/containers/content-b-root/content-b-root.component';
+import { JsonPlaceholderService } from './shared/services/json-placeholder.service';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from '../environments/environment';
-import { LoginComponent } from './todo/features/containers/login/login.component';
 
 
 
@@ -25,7 +25,6 @@ import { LoginComponent } from './todo/features/containers/login/login.component
     ContentAChildComponent,
     ContentBChildComponent,
     ContentBRootComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +33,7 @@ import { LoginComponent } from './todo/features/containers/login/login.component
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot()
   ],
-  providers: [ContentAService],
+  providers: [ContentAService, JsonPlaceholderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
