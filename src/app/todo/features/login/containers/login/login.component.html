@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="container">
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <span class="form__title">Login</span>
+    <input
+      type="text"
+      name="name"
+      class="form__name --input"
+      formControlName="name"
+      placeholder="Your name"
+    >
+    <input
+      type="email"
+      name="email"
+      class="form__email --input"
+      formControlName="email"
+      placeholder="Your e-mail"
+    >
+    <button
+     type="submit"
+     name="button"
+     class="form__button"
+     [disabled]="!loginForm.valid"
+     [style.cursor]="!loginForm.valid ? 'no-drop' : 'pointer'"
+    >Submit</button>
+  </form>
+</div>
