@@ -1,0 +1,42 @@
+$color-1: #4d4d4d;
+$color-2: #2E86C1;
+$color-3: #fff;
+
+// TODO: resolver problema do dashboard__greetings!
+
+.dashboard {
+  width: 100%;
+  height: auto;
+  color: #fff;
+  background-color: $color-1;
+  display: flex;
+
+
+  .dashboard__greetings {
+    margin: 0 auto;
+    display: none;
+
+    p {
+      text-align: center;
+    }
+  }
+
+  .dashboard__content-1 {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 4em;
+    //background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .dashboard__content-2 {
+    padding: 4em 0 0 2em;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    //background-color: rgba(255, 255, 255, 0.8);
+  }
+
+}

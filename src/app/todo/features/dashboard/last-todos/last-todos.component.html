@@ -1,1 +1,21 @@
-<p>last-todos works!</p>
+<div class="component">
+  <a routerLink="list" class="component__link">Lista Completa</a>
+
+  <label class="component__label">Exibindo os 10 últimos ToDos</label>
+
+  <ng-container *ngIf="true">
+    <div class="card" *ngFor="let item of list" (click)="markAsDone(item.id)">
+      <label class="card__label">{{ item.createdAt | date:'dd/MM/yyyy HH:mm' }}</label>
+      <h3 class="card__title">{{ item.title }}</h3>
+
+      <div class="card__checkbox">
+        <input type="checkbox" class="card__input" [checked]="item.done">
+        <label for="checkbox" class="card__label">
+          <span>Feito!</span>
+        </label>
+      </div>
+    </div>
+  </ng-container>
+
+  <span *ngIf="false">Carregando...</span>
+</div>
