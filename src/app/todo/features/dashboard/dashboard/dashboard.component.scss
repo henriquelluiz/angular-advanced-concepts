@@ -1,4 +1,4 @@
-$color-1: #4d4d4d;
+$color-1: #191919;
 $color-2: #2E86C1;
 $color-3: #fff;
 
@@ -7,8 +7,11 @@ $color-3: #fff;
 .dashboard {
   width: 100%;
   height: auto;
-  color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background-color: $color-1;
+  color: #fff;
   display: flex;
 
 
@@ -27,16 +30,14 @@ $color-3: #fff;
     display: flex;
     justify-content: flex-end;
     padding: 4em;
-    //background-color: rgba(255, 255, 255, 0.5);
+    //background-color: salmon;
   }
 
   .dashboard__content-2 {
-    padding: 4em 0 0 2em;
+    padding: 4em 0 0 0;
     width: 40%;
     height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    //background-color: rgba(255, 255, 255, 0.8);
+    //background: lightgreen;
   }
 
 }

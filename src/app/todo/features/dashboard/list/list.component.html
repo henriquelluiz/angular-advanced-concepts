@@ -1,1 +1,21 @@
-<p>list works!</p>
+<div class="list">
+  <label class="list__label">Exibindo Lista Completa</label>
+
+  <ng-container *ngIf="true">
+    <div class="card" *ngFor="let item of list" (click)="markAsDone(item.id)">
+      <label class="card__label">{{ item.createdAt | date:'dd/MM/yyyy HH:mm' }}</label>
+      <h3 class="card__title">{{ item.title }}</h3>
+
+      <div class="card__checkbox">
+        <input type="checkbox" class="card__checkbox" [checked]="item.done">
+        <label for="checkbox" class="card__label">
+          <span>Feito!</span>
+        </label>
+      </div>
+
+      <button class="card__button buttons">Deletar</button>
+    </div>
+  </ng-container>
+
+  <button class="list__button buttons">Carregar Mais</button>
+</div>
