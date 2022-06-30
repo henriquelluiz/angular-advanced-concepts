@@ -10,6 +10,7 @@ import { Todo } from 'src/app/shared/models/todo.model';
 export class ListComponent implements OnInit {
 
   list: Todo[] = [];
+  page: number = 0;
 
   constructor(private todoService: TodosService) { }
 
@@ -19,11 +20,21 @@ export class ListComponent implements OnInit {
   }
 
   loadMore(): void {
-    // TODO: implementar a função.
+    this.page++;
+    this.todoService.getList(this.page)
+      .subscribe(list => { this.list = [...this.list, ...list] })
+  }
+
+  onDelete(id: number): void {
+    this.todoService.remove(id)
+     .subscribe(() => this.list.filter(i => i.id !== id));
   }
 
   markAsDone(id: number): void {
-
+    this.todoService.toggleDone(id)
+    .subscribe(todo => {
+      this.list = this.list.map(item => item.id === todo.id ? todo: item);
+    });
   }
 
 }

@@ -32,6 +32,7 @@
     color: #fff;
     border-radius: 12px;
     background-color: #242424;
+    transition: 0.8s ease-in-out;
 
 
     .card__checkbox {
@@ -54,6 +55,10 @@
     margin-bottom: 1em;
   }
 
+}
+
+.card:hover {
+  border: 1px solid lightblue;
 }
 
 .buttons {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { TodosService } from 'src/app/shared/services/todos.service';
 
@@ -9,7 +9,9 @@ import { TodosService } from 'src/app/shared/services/todos.service';
 })
 export class CreateTodoComponent implements OnInit {
 
-  creating: boolean = false;
+  @Output() created = new EventEmitter;
+
+  loading: boolean = false;
   title: FormControl = new FormControl('', [ Validators.required ]);
 
   constructor(private tdService: TodosService) { }
@@ -17,8 +19,8 @@ export class CreateTodoComponent implements OnInit {
   ngOnInit(): void { }
 
   save(): void {
-    this.tdService.create(this.title.value)
-      .subscribe();
+    this.tdService.create({ title: this.title.value })
+      .subscribe(todo => { this.created.emit(todo) });
   }
 
 }

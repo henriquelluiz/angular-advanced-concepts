@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { Todo } from 'src/app/shared/models/todo.model';
+import { LastTodosComponent } from '../last-todos/last-todos.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,11 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  @ViewChild(LastTodosComponent, {static: false}) lastTodos!: LastTodosComponent;
   name: string = 'Henrique';
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onCreated(todo: Todo): void {
+    this.lastTodos.handleCreated(todo);
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="container">
   <span class="form__title">Criar Nova Tarefa</span>
   <input type="text" formControlName="title" class="--input" placeholder="Estudar Português...">
-  <button *ngIf="!creating" class="form__button">Criar</button>
-  <span *ngIf="creating">Carregando...</span>
+  <button *ngIf="!loading" class="form__button">Criar</button>
+  <span *ngIf="loading">Carregando...</span>
 </div>
