@@ -19,7 +19,7 @@ export class CreateTodoComponent implements OnInit {
   ngOnInit(): void { }
 
   save(): void {
-    this.tdService.create({ title: this.title.value })
+    this.tdService.create({ title: <string>this.title.value })
       .subscribe(todo => { this.created.emit(todo) });
   }
 
