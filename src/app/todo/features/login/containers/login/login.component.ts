@@ -1,8 +1,10 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { LoginService } from 'src/app/shared/services/login.service';
+import { Store } from '@ngrx/store';
+
+import { AppState } from 'src/app/state/app.reducer';
+import * as fromAppActions from 'src/app/state/app.actions';
 
 
 @Component({
@@ -18,18 +20,13 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
-    private route: Router,
-    private loginService: LoginService,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void { }
 
   login(): void {
-    this.loginService.login(<string>this.loginForm.value.name, <string>this.loginForm.value.email)
-      .subscribe(user => {
-        console.log('User from Login', user);
-        this.route.navigateByUrl('dashboard');
-      });
+    this.store.dispatch(fromAppActions.doLogin(this.loginForm.value));
   }
 
 }
