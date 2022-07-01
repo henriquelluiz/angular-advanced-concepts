@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
 
   onDelete(id: number): void {
     this.todoService.remove(id)
-     .subscribe(() => this.list.filter(i => i.id !== id));
+     .subscribe(() => this.list = this.list.filter(i => i.id !== id));
   }
 
   markAsDone(id: number): void {
