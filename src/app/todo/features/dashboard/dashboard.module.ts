@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { ListTodosComponent } from './list-todos/list-todos.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { LastTodosComponent } from './last-todos/last-todos.component';
+import { ListService } from './services/list.service';
 import { CreateTodoComponent } from './create-todo/create-todo.component';
 
 
@@ -28,6 +29,9 @@ import { CreateTodoComponent } from './create-todo/create-todo.component';
       { path: '', component: DashboardComponent, title: 'Dashboard ― Home' },
       { path: 'list', component: ListComponent, title: 'Dashboard ― List' }
     ])
-  ]
+  ],
+  providers: [
+    ListService,
+  ],
 })
 export class DashboardModule { }

@@ -1,6 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { TodosService } from 'src/app/shared/services/todos.service';
+
+import { ListService } from '../services/list.service';
+// import { TodosService } from 'src/app/shared/services/todos.service';
+// import { Todo } from 'src/app/shared/models/todo.model';
 
 @Component({
   selector: 'app-create-todo',
@@ -9,20 +12,22 @@ import { TodosService } from 'src/app/shared/services/todos.service';
 })
 export class CreateTodoComponent implements OnInit {
 
-  @Output() created = new EventEmitter;
-
+  // @Output() created = new EventEmitter;
+  // list: Todo[] = [];
   loading: boolean = false;
   title: FormControl = new FormControl('', [ Validators.required ]);
 
-  constructor(private tdService: TodosService) { }
+  constructor(private listService: ListService) {
+    // this.listService.list$
+    //   .subscribe(list => this.list = list);
+  }
 
   ngOnInit(): void { }
 
   save(): void {
-    this.tdService.create({ title: this.title.value })
-      .subscribe(todo => {
-        this.created.emit(todo)
-      });
+    // Tranportando o create para o listService
+    // Para evitar a inconsistência de dados, devo centralizar eles.
+    this.listService.create(this.title.value);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { Todo } from 'src/app/shared/models/todo.model';
+// import { Todo } from 'src/app/shared/models/todo.model';
 import { UserContextService } from 'src/app/shared/services/user-context.service';
 import { LastTodosComponent } from '../last-todos/last-todos.component';
 
@@ -17,10 +17,6 @@ export class DashboardComponent implements OnInit {
   constructor(public userContext: UserContextService) { }
 
   ngOnInit(): void {
-  }
-
-  onCreated(todo: Todo): void {
-    this.lastTodos.handleCreated(todo);
   }
 
 }

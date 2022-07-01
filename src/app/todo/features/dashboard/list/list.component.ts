@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { ListService } from '../services/list.service';
 import { TodosService } from 'src/app/shared/services/todos.service';
 import { Todo } from 'src/app/shared/models/todo.model';
 
@@ -10,19 +12,21 @@ import { Todo } from 'src/app/shared/models/todo.model';
 export class ListComponent implements OnInit {
 
   list: Todo[] = [];
-  page: number = 0;
 
-  constructor(private todoService: TodosService) { }
+  constructor(
+    private todoService: TodosService,
+    private listService: ListService
+  ) { }
 
   ngOnInit(): void {
-    this.todoService.getList(0)
-      .subscribe(list => { this.list = list });
+    this.listService.list$
+    .subscribe(list => this.list = list);
   }
 
   loadMore(): void {
-    this.page++;
-    this.todoService.getList(this.page)
-      .subscribe(list => { this.list = [...this.list, ...list] })
+    this.listService.page++;
+    this.todoService.getList(this.listService.page)
+      .subscribe(list => { this.listService.list = [...this.list, ...list] })
   }
 
   onDelete(id: number): void {
