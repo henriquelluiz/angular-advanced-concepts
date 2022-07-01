@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LoginService } from 'src/app/shared/services/login.service';
-import { UserContextService } from 'src/app/shared/services/user-context.service';
+
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: Router,
     private loginService: LoginService,
-    private userContext: UserContextService
   ) { }
 
   ngOnInit(): void { }
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.loginService.login(<string>this.loginForm.value.name, <string>this.loginForm.value.email)
       .subscribe(user => {
-        this.userContext.user = user;
+        console.log('User from Login', user);
         this.route.navigateByUrl('dashboard');
       });
   }
