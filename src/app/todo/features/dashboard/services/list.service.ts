@@ -38,15 +38,4 @@ export class ListService {
         this.list = [todo, ...this.listSubject.value];
       });
   }
-
-  // private _list!: Todo[];
-  // page = 0;
-  //
-  // get list(): Todo[] {
-  //   return this._list;
-  // }
-  //
-  // set list(todoList: Todo[]) {
-  //   this._list = todoList;
-  // }
 }

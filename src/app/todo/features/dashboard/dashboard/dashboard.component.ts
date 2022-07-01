@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-// import { Todo } from 'src/app/shared/models/todo.model';
-import { UserContextService } from 'src/app/shared/services/user-context.service';
-import { LastTodosComponent } from '../last-todos/last-todos.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,10 +8,9 @@ import { LastTodosComponent } from '../last-todos/last-todos.component';
 })
 export class DashboardComponent implements OnInit {
 
-  @ViewChild(LastTodosComponent, {static: false}) lastTodos!: LastTodosComponent;
   name: string = '';
 
-  constructor(public userContext: UserContextService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
