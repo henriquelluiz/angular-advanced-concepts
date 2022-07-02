@@ -15,7 +15,7 @@ import * as fromAppActions from 'src/app/state/app.actions';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    name: new FormControl<string>('', [ Validators.required ]),
+    name: new FormControl('', [ Validators.required ]),
     email: new FormControl<string>('', [ Validators.required ])
   });
 
@@ -26,7 +26,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   login(): void {
-    this.store.dispatch(fromAppActions.doLogin(this.loginForm.value));
+    this.store.dispatch(fromAppActions.doLogin(
+      {
+       name: <string>this.loginForm.value.name,
+       email: <string>this.loginForm.value.email
+      })
+    );
   }
 
 }
