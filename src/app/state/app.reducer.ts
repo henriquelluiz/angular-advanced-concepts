@@ -5,12 +5,12 @@ import * as fromAppActions from './app.actions';
 
 // 1. Estado inicial inativo
 export interface AppState {
-  user?: User;
+  user: User;
 }
 
 // 2. Estado inicial inicializado (ativo)
 export const initialState: AppState = {
-  user: undefined
+  user: { name: '', email: '' }
 }
 
 // 3. Helper Function 'createReducer'
