@@ -10,6 +10,10 @@ export const loadListFromList = createAction(
   '[List] Load List'
 );
 
+export const loadMore = createAction(
+  '[List] Load More'
+);
+
 // 'Success' ou 'Failure' vêm do mesmo lugar: request.
 export const loadListSuccess = createAction(
   '[API] Load List Success',

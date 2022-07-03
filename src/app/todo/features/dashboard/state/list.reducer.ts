@@ -6,25 +6,39 @@ import * as fromListActions from './list.actions';
 export interface ListState {
   entities: Todo[],
   loading: boolean,
-  error: boolean
+  loadingMore: boolean,
+  error: boolean,
+  page: number
 }
 
 export const listInitialState: ListState = {
   entities: [],
   loading: false,
-  error: false
+  loadingMore: false,
+  error: false,
+  page: 0
 }
 
 export const reducer = createReducer(
   listInitialState,
   on(fromListActions.loadListFromLastTodos, fromListActions.loadListFromList, state => ({
     ...state,
-    loading: true
+    entities: [],
+    loading: true,
+    error: false,
+    page: 0
+  })),
+  on(fromListActions.loadMore, state => ({
+    ...state,
+    loadingMore: true,
+    error: false,
+    page: state.page + 1
   })),
   on(fromListActions.loadListSuccess, (state, { entities }) => ({
     ...state,
-    entities,
-    loading: false
+    entities: [...state.entities, ...entities],
+    loading: false,
+    loadingMore: false
   })),
   on(fromListActions.loadListFailure, state => ({
     ...state,

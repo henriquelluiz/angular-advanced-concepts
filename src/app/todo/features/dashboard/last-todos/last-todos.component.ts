@@ -26,7 +26,7 @@ export class LastTodosComponent implements OnInit {
     this.store.dispatch(fromListActions.loadListFromLastTodos());
 
     this.list$ = this.store.pipe(select(fromListSelectors.selectListEntities));
-    this.loading$ = this.store.pipe(select(fromListSelectors.selectLIstLoading));
+    this.loading$ = this.store.pipe(select(fromListSelectors.selectListLoading));
 
     //setInterval(() => { this.list$.subscribe(console.log) }, 2000);
     this.list$.subscribe(console.log);

@@ -9,7 +9,7 @@ export const selectListEntities = createSelector(
   (state: ListState) => state.entities
 );
 
-export const selectLIstLoading = createSelector(
+export const selectListLoading = createSelector(
   selectListState,
   (state: ListState) => state.loading
 );
@@ -17,4 +17,14 @@ export const selectLIstLoading = createSelector(
 export const selectListError = createSelector(
   selectListState,
   (state: ListState) => state.error
+);
+
+export const selectListPage = createSelector(
+  selectListState,
+  (state: ListState) => state.page
+);
+
+export const selectLoadingMore = createSelector(
+  selectListState,
+  (state: ListState) => state.loadingMore
 );

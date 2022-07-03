@@ -1,8 +1,8 @@
 <div class="list">
   <label class="list__label">Exibindo Lista Completa</label>
 
-  <ng-container *ngIf="true">
-    <div class="card" *ngFor="let item of list" (click)="markAsDone(item.id)">
+  <ng-container *ngIf="!(loading$ | async)">
+    <div class="card" *ngFor="let item of (list$ | async)" (click)="markAsDone(item.id)">
       <label class="card__label">{{ item.createdAt | date:'dd/MM/yyyy HH:mm' }}</label>
       <h3 class="card__title">{{ item.title }}</h3>
 
@@ -17,5 +17,13 @@
     </div>
   </ng-container>
 
-  <button class="list__button buttons" (click)="loadMore()">Carregar Mais</button>
+  <button
+    class="list__button buttons"
+    (click)="loadMore()"
+    *ngIf="!(shouldShowLoadingIndicator$ | async)"
+  >
+    Carregar Mais
+  </button>
+
+  <span *ngIf="shouldShowLoadingIndicator$ | async" class="list__span">Carregando...</span>
 </div>
