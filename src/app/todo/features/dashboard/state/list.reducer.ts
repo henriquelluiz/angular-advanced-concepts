@@ -23,7 +23,7 @@ export const reducer = createReducer(
   })),
   on(fromListActions.loadListSuccess, (state, { entities }) => ({
     ...state,
-    ...entities,
+    entities,
     loading: false
   })),
   on(fromListActions.loadListFailure, state => ({

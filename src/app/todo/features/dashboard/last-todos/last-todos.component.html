@@ -3,8 +3,8 @@
 
   <label class="component__label">Exibindo os 10 últimos ToDos</label>
 
-  <ng-container *ngIf="true">
-    <div class="card" *ngFor="let item of list" (click)="markAsDone(item.id)">
+  <ng-container *ngIf="!(loading$ | async)">
+    <div class="card" *ngFor="let item of (list$ | async)" (click)="markAsDone(item.id)">
       <label class="card__label">{{ item.createdAt | date:'dd/MM/yyyy HH:mm' }}</label>
       <h3 class="card__title">{{ item.title }}</h3>
 
@@ -17,5 +17,5 @@
     </div>
   </ng-container>
 
-  <span *ngIf="false">Carregando...</span>
+  <span *ngIf="loading$ | async">Carregando...</span>
 </div>
